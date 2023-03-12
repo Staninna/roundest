@@ -29,12 +29,14 @@ $loser = $winner === $pokemon_1 ? $pokemon_2 : $pokemon_1;
 include_once('conn.php');
 
 // Update winner
-$query = "UPDATE pokemon SET voted_for = voted_for + 1 WHERE id = :id";
+$query = "UPDATE pokemon
+          SET voted_for = voted_for + 1, total_votes = total_votes + 1 WHERE id = :id";
 $stmt = $conn->prepare($query);
 $stmt->execute(['id' => $winner['id']]);
 
 // Update loser
-$query = "UPDATE pokemon SET voted_against = voted_against + 1 WHERE id = :id";
+$query = "UPDATE pokemon
+          SET voted_against = voted_against + 1, total_votes = total_votes + 1 WHERE id = :id";
 $stmt = $conn->prepare($query);
 $stmt->execute(['id' => $loser['id']]);
 

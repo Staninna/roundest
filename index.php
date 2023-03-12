@@ -5,8 +5,19 @@ require_once 'backend/conn.php';
 // Start the session
 session_start();
 
-// Get 2 random pokemon
-$pokemons = $conn->query("SELECT * FROM pokemon ORDER BY RAND() LIMIT 2")->fetchAll(PDO::FETCH_ASSOC);
+// Get two random pokemon
+$query = "SELECT id, name
+          FROM (
+              SELECT id, name
+              FROM pokemon
+              ORDER BY total_votes ASC
+              LIMIT 20
+          ) AS least_20
+          ORDER BY RAND()
+          LIMIT 2;";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$pokemons = $stmt->fetchAll();
 $pokemon_1 = $pokemons[0];
 $pokemon_2 = $pokemons[1];
 

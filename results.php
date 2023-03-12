@@ -4,7 +4,10 @@
 require_once('backend/conn.php');
 
 // Get all pokemon
-$query = "SELECT *, (voted_for * 100 / (voted_for + voted_against)) AS positive_votes_percentage FROM pokemon ORDER BY positive_votes_percentage DESC, (voted_for + voted_against) DESC";
+$query = "SELECT name, voted_for, voted_against,
+          (voted_for * 100 / (voted_for + voted_against)) AS positive_votes_percentage
+          FROM pokemon
+          ORDER BY positive_votes_percentage DESC, (voted_for + voted_against) DESC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 $pokemons = $stmt->fetchAll(PDO::FETCH_ASSOC);
