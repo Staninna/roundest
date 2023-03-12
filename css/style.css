@@ -1,0 +1,12 @@
+.pokemon-sprite {
+    image-rendering: pixelated;
+}
+
+.form-pokemons {
+    display: flex;
+}
+
+.form-pokemon {
+    display: flex;
+    flex-direction: column;
+}
