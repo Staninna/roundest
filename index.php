@@ -26,7 +26,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
 <!DOCTYPE html>
 <html>
 
-<?php require_once 'head.php'; ?>
+<?php require_once('backend/head.php'); ?>
 
 <body>
     <form action="backend/submit.php" method="post">
