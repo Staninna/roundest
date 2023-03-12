@@ -9,21 +9,36 @@ $stmt = $conn->prepare($query);
 $stmt->execute();
 $pokemons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo '<table>';
-echo '<tr>';
-echo '<th>Sprite</th>';
-echo '<th>Pokemon</th>';
-echo '<th>Positive votes</th>';
-echo '<th>Negative votes</th>';
-echo '<th>Positive votes percentage</th>';
-echo '</tr>';
-foreach ($pokemons as $pokemon) {
-    echo '<tr>';
-    echo '<td><img src="img/mon/' . $pokemon['id'] . '.png" alt="' . $pokemon['name'] . '" class="pokemon-sprite" /></td>';
-    echo '<td>' . $pokemon['name'] . '</td>';
-    echo '<td>' . $pokemon['voted_for'] . '</td>';
-    echo '<td>' . $pokemon['voted_against'] . '</td>';
-    echo '<td>' . $pokemon['positive_votes_percentage'] . '</td>';
-    echo '</tr>';
-}
-echo '</table>';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php require_once('backend/head.php'); ?>
+    <title>Results</title>
+</head>
+
+<body>
+    <h1>Results</h1>
+
+
+    <table>
+        <tr>
+            <th>Sprite</th>
+            <th>Pokemon</th>
+            <th>Positive votes</th>
+            <th>Negative votes</th>
+            <th>Positive votes percentage</th>
+        </tr>
+        <?php foreach ($pokemons as $pokemon) { ?>
+            <tr>
+                <td><img src="img/mon/<?php echo $pokemon['id']; ?>.png" alt="<?php echo $pokemon['name']; ?>" class="pokemon-sprite" /></td>
+                <td><?php echo $pokemon['name']; ?></td>
+                <td><?php echo $pokemon['voted_for']; ?></td>
+                <td><?php echo $pokemon['voted_against']; ?></td>
+                <td><?php echo $pokemon['positive_votes_percentage']; ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+</body>
