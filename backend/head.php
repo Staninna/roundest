@@ -17,5 +17,19 @@
         function onSubmit(token) {
             document.getElementById("<?= $captcha_form_id; ?>").submit();
         }
+
+        // Automatically submit form when pokemon is clicked
+        document.addEventListener("DOMContentLoaded", () => {
+            // Submit form when pokemon is clicked
+            const form = document.getElementById("<?= $captcha_form_id ?>");
+            const radios = form.querySelectorAll('input[type="radio"]');
+            const submitButton = form.querySelector('button');
+
+            for (const radio of radios) {
+                radio.addEventListener("change", () => {
+                    submitButton.click();
+                });
+            }
+        });
     </script>
 </head>

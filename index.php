@@ -34,25 +34,22 @@ $_SESSION['pokemon_2'] = $pokemon_2;
 
 <body>
     <h1>Choose the roundest pokemon</h1>
-    <form action="backend/submit.php" method="post">
+
+    <?= isset($_GET['msg']) ? '<p class="error">' . $_GET['msg'] . '</p>' : '' ?>
+
+    <form action="backend/submit.php" method="post" id="<?= $captcha_form_id; ?>">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
         <div class="form-pokemons">
             <label class="form-pokemon">
                 <img src="img/mon/<?= $pokemon_1['id'] ?>.png" alt="<?= $pokemon_1['name'] ?>" class="pokemon-sprite" />
-                <div class="form-input">
-                    <input type="radio" name="choice" value="<?php echo $pokemon_1['id']; ?>" required>
-                    <?php echo $pokemon_1['name']; ?>
-                </div>
+                <input class="hidden" type="radio" name="choice" value="<?php echo $pokemon_1['id']; ?>" required>
             </label>
             <label class="form-pokemon">
                 <img src="img/mon/<?= $pokemon_2['id'] ?>.png" alt="<?= $pokemon_2['name'] ?>" class="pokemon-sprite" />
-                <div class="form-input">
-                    <input type="radio" name="choice" value="<?php echo $pokemon_2['id']; ?>" required>
-                    <?php echo $pokemon_2['name']; ?>
-                </div>
+                <input class="hidden" type="radio" name="choice" value="<?php echo $pokemon_2['id']; ?>" required>
             </label>
         </div>
-        <input class="g-recaptcha" type="submit" data-sitekey="<?php echo $site_key; ?>" data-callback="onSubmit" data-action="submit" value="Submit">
+        <button class="g-recaptcha hidden" data-sitekey="<?php echo $site_key; ?>" data-callback="onSubmit" data-action="submit"></button>
     </form>
     <br>
     <br>

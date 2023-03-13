@@ -11,6 +11,10 @@
     flex-direction: column;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Hide google reCaptcha badge */
 .grecaptcha-badge {
     display: none;
