@@ -7,6 +7,7 @@ session_start();
 
 // Get two random pokemon
 $query = "SELECT id, name
+          FROM pokemon
           ORDER BY RAND()
           LIMIT 2";
 $stmt = $conn->prepare($query);
