@@ -39,6 +39,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
 </head>
 
 <body>
+    <h1>Choose the roundest pokemon</h1>
     <form action="backend/submit.php" method="post">
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
         <div class="form-pokemons">
