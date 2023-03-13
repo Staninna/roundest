@@ -11,7 +11,7 @@ $query = "SELECT id, name
               SELECT id, name
               FROM pokemon
               ORDER BY total_votes ASC
-              LIMIT 20
+              LIMIT 40
           ) AS least_20
           ORDER BY RAND()
           LIMIT 2;";
