@@ -44,8 +44,8 @@ include_once('config.php');
 $expected_win_probability_winner = 1 / (1 + pow($power, ($loser_elo  - $winner_elo) / $devider));
 $expected_win_probability_loser  = 1 / (1 + pow($power, ($winner_elo -  $loser_elo) / $devider));
 
-$winner_elo_new = $winner_elo + $K * ($score_win  - $expected_win_probability_winner);
-$loser_elo_new =  $loser_elo  + $K * ($score_lose - $expected_win_probability_loser);
+$winner_elo_new = $winner_elo + $multiplier * ($score_win  - $expected_win_probability_winner);
+$loser_elo_new =  $loser_elo  + $multiplier * ($score_lose - $expected_win_probability_loser);
 
 // Update database
 $query = "UPDATE pokemon
@@ -54,7 +54,6 @@ $query = "UPDATE pokemon
 $stmt = $conn->prepare($query);
 $stmt->execute(['elo_rating' => $winner_elo_new, 'id' => $winner['id']]);
 $stmt->execute(['elo_rating' => $loser_elo_new, 'id' => $loser['id']]);
-
 
 // Destroy session
 session_destroy();
