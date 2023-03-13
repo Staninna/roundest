@@ -4,14 +4,14 @@
 session_start();
 
 // Get data
-$winner = $_POST['winner'];
+$choice = $_POST['choice'];
 $pokemon_1 = $_SESSION['pokemon_1'];
 $pokemon_2 = $_SESSION['pokemon_2'];
 
 if (
-    !isset($_POST['form_id']) || !isset($_POST['winner']) ||   // Check if all data is set
+    !isset($_POST['form_id']) || !isset($_POST['choice']) ||   // Check if all data is set
     $_POST['form_id'] !== $_SESSION['form_id'] ||              // Check if form id is valid
-    $winner != $pokemon_1['id'] && $winner != $pokemon_2['id'] // Check if winner is valid
+    $choice != $pokemon_1['id'] && $choice != $pokemon_2['id'] // Check if winner is valid
 ) {
     // Destroy session
     session_destroy();
@@ -22,23 +22,39 @@ if (
 }
 
 // Get winner and loser
-$winner = $winner === $pokemon_1['id'] ? $pokemon_1 : $pokemon_2;
-$loser = $winner === $pokemon_1 ? $pokemon_2 : $pokemon_1;
+$winner = $choice == $pokemon_1['id'] ? $pokemon_1 : $pokemon_2;
+$loser = $choice  == $pokemon_1['id'] ? $pokemon_2 : $pokemon_1;
 
 // Connect to database
 include_once('conn.php');
 
-// Update winner
-$query = "UPDATE pokemon
-          SET voted_for = voted_for + 1, total_votes = total_votes + 1 WHERE id = :id";
+// Get winner and loser elo ratings
+$query = "SELECT elo_rating
+          FROM pokemon
+          WHERE id = :id";
 $stmt = $conn->prepare($query);
 $stmt->execute(['id' => $winner['id']]);
-
-// Update loser
-$query = "UPDATE pokemon
-          SET voted_against = voted_against + 1, total_votes = total_votes + 1 WHERE id = :id";
-$stmt = $conn->prepare($query);
+$winner_elo = $stmt->fetch(PDO::FETCH_ASSOC)['elo_rating'];
 $stmt->execute(['id' => $loser['id']]);
+$loser_elo = $stmt->fetch(PDO::FETCH_ASSOC)['elo_rating'];
+
+// Calculate new elo ratings
+include_once('config.php');
+
+$expected_win_probability_winner = 1 / (1 + pow($power, ($loser_elo  - $winner_elo) / $devider));
+$expected_win_probability_loser  = 1 / (1 + pow($power, ($winner_elo -  $loser_elo) / $devider));
+
+$winner_elo_new = $winner_elo + $K * ($score_win  - $expected_win_probability_winner);
+$loser_elo_new =  $loser_elo  + $K * ($score_lose - $expected_win_probability_loser);
+
+// Update database
+$query = "UPDATE pokemon
+          SET elo_rating = :elo_rating
+          WHERE id = :id";
+$stmt = $conn->prepare($query);
+$stmt->execute(['elo_rating' => $winner_elo_new, 'id' => $winner['id']]);
+$stmt->execute(['elo_rating' => $loser_elo_new, 'id' => $loser['id']]);
+
 
 // Destroy session
 session_destroy();
