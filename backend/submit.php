@@ -20,7 +20,7 @@ if (
     session_destroy();
 
     // Redirect to index
-    header('Location: ../index.php');
+    header('Location: ../index.php?msg=Something went wrong, I don\'t where. And I don\'t care.');
     exit();
 }
 
