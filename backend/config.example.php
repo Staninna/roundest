@@ -1,7 +1,7 @@
 <?php
 
 $dbHost   = 'localhost';
-$dbName   = 'storingapp';
+$dbName   = 'pokemon';
 $dbUser   = 'root';
 $dbPass   = '';
 $base_url = 'http://localhost/';
