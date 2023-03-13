@@ -7,14 +7,8 @@ session_start();
 
 // Get two random pokemon
 $query = "SELECT id, name
-          FROM (
-              SELECT id, name
-              FROM pokemon
-              ORDER BY total_votes ASC
-              LIMIT 40
-          ) AS least_20
           ORDER BY RAND()
-          LIMIT 2;";
+          LIMIT 2";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 $pokemons = $stmt->fetchAll();
@@ -25,7 +19,8 @@ $pokemon_2 = $pokemons[1];
 $ip = (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
 $date = date('YmdHis');
 $rand_int = rand(0, 1000000);
-$form_id = hash('sha256', $ip . $date . $rand_int . "@Staninna");
+$author = "Staninna";
+$form_id = hash('sha256', $ip . $date . $rand_int . $author);
 
 // Set session variables
 $_SESSION['form_id'] = $form_id;
