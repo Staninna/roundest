@@ -4,7 +4,7 @@
 require_once('backend/conn.php');
 
 // Get all pokemon
-$query = "SELECT name, voted_for, voted_against,
+$query = "SELECT id, name, voted_for, voted_against,
           (voted_for * 100 / (voted_for + voted_against)) AS positive_votes_percentage
           FROM pokemon
           ORDER BY positive_votes_percentage DESC, total_votes DESC";
