@@ -9,9 +9,9 @@ $pokemon_1 = $_SESSION['pokemon_1'];
 $pokemon_2 = $_SESSION['pokemon_2'];
 
 if (
-    !isset($_POST['form_id']) || !isset($_POST['winner']) ||     // Check if all data is set
-    $_POST['form_id'] !== $_SESSION['form_id'] ||                // Check if form id is valid
-    $winner != $pokemon_1['id'] && $winner != $pokemon_2['id']   // Check if winner is valid
+    !isset($_POST['form_id']) || !isset($_POST['winner']) ||   // Check if all data is set
+    $_POST['form_id'] !== $_SESSION['form_id'] ||              // Check if form id is valid
+    $winner != $pokemon_1['id'] && $winner != $pokemon_2['id'] // Check if winner is valid
 ) {
     // Destroy session
     session_destroy();
