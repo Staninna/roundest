@@ -13,13 +13,7 @@ $pokemons = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php require_once('backend/head.php'); ?>
-    <title>Results</title>
-</head>
+<?php require_once('backend/head.php'); ?>
 
 <body>
     <h1>Results</h1>
