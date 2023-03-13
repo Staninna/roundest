@@ -30,13 +30,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php require_once('backend/head.php'); ?>
-    <title>Roundest Pokemon</title>
-</head>
+<?php require_once('backend/head.php'); ?>
 
 <body>
     <h1>Choose the roundest pokemon</h1>
@@ -60,4 +54,8 @@ $_SESSION['pokemon_2'] = $pokemon_2;
         </div>
         <input type="submit" value="Submit">
     </form>
+    <br>
+    <br>
+    <br>
+    <a href="results.php">View results</a>
 </body>
