@@ -41,10 +41,12 @@ $_SESSION['pokemon_2'] = $pokemon_2;
         <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
         <div class="form-pokemons">
             <label class="form-pokemon">
+                <?= $pokemon_1['name'] ?>
                 <img src="img/mon/<?= $pokemon_1['id'] ?>.png" alt="<?= $pokemon_1['name'] ?>" class="pokemon-sprite" />
                 <input class="hidden" type="radio" name="choice" value="<?php echo $pokemon_1['id']; ?>" required>
             </label>
             <label class="form-pokemon">
+                <?= $pokemon_2['name'] ?>
                 <img src="img/mon/<?= $pokemon_2['id'] ?>.png" alt="<?= $pokemon_2['name'] ?>" class="pokemon-sprite" />
                 <input class="hidden" type="radio" name="choice" value="<?php echo $pokemon_2['id']; ?>" required>
             </label>
