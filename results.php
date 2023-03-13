@@ -6,7 +6,7 @@ require_once('backend/conn.php');
 // Get all pokemon
 $query = "SELECT id, name, elo_rating
           FROM pokemon
-          ORDER BY elo_rating DESC, total_votes DESC";
+          ORDER BY elo_rating DESC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 $pokemons = $stmt->fetchAll(PDO::FETCH_ASSOC);
