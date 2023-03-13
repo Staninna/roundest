@@ -52,7 +52,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
                 </div>
             </label>
         </div>
-        <input type="submit" value="Submit">
+        <input class="g-recaptcha" type="submit" data-sitekey="<?php echo $site_key; ?>" data-callback="onSubmit" data-action="submit" value="Submit">
     </form>
     <br>
     <br>

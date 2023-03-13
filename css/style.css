@@ -10,3 +10,8 @@
     display: flex;
     flex-direction: column;
 }
+
+/* Hide google reCaptcha badge */
+.grecaptcha-badge {
+    display: none;
+}
