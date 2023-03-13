@@ -17,7 +17,7 @@ if (
     session_destroy();
 
     // Redirect to index
-    header('Location: ../index.php?error=invalid_data');
+    header('Location: ../index.php');
     exit();
 }
 
