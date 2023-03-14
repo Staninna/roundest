@@ -1,11 +1,11 @@
-CREATE TABLE `pokemon` (
-    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `elo_rating` int NOT NULL DEFAULT '1500',
-    `total_votes` int NOT NULL DEFAULT '0'
+CREATE TABLE pokemon (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    elo_rating int NOT NULL DEFAULT '1500',
+    total_votes int NOT NULL DEFAULT '0'
 );
 
-INSERT INTO `pokemon` (`name`) VALUES
+INSERT INTO pokemon (name) VALUES
 ('Bulbasaur'),
 ('Ivysaur'),
 ('Venusaur'),
