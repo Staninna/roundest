@@ -2,7 +2,7 @@
 
 // Database
 $dbHost   = 'localhost';
-$dbName   = 'pokemon';
+$dbName   = 'roundest';
 $dbUser   = 'root';
 $dbPass   = '';
 $base_url = 'http://localhost/';
