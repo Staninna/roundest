@@ -31,6 +31,15 @@
                     submitButton.click();
                 });
             }
+
+            // left arrow or right arrow key pressed vote on left pokemon or right pokemon
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    radios[0].click();
+                } else if (e.key === "ArrowRight") {
+                    radios[1].click();
+                }
+            });
         });
     </script>
 </head>
