@@ -59,7 +59,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
     <a href="https://github.com/Staninna/roundest">GitHub repository</a>
     <br>
     <br>
-    This site is protected by reCAPTCHA and the Google
+    <p>This site is protected by reCAPTCHA and the Google</p>
     <a href="https://policies.google.com/privacy">Privacy Policy</a> and
     <a href="https://policies.google.com/terms">Terms of Service</a> apply.
 </body>
