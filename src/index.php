@@ -56,6 +56,7 @@ $_SESSION['pokemon_2'] = $pokemon_2;
     <br>
     <br>
     <a href="results.php">View results</a>
+    <a href="https://github.com/Staninna/roundest">GitHub repository</a>
     <br>
     <br>
     This site is protected by reCAPTCHA and the Google
