@@ -52,7 +52,8 @@ $loser_elo_new =  $loser_elo  + $multiplier * ($score_lose - $expected_win_proba
 
 // Update database
 $query = "UPDATE pokemon
-          SET elo_rating = :elo_rating
+          SET elo_rating = :elo_rating,
+             total_votes = total_votes + 1
           WHERE id = :id";
 $stmt = $conn->prepare($query);
 $stmt->execute(['elo_rating' => $winner_elo_new, 'id' => $winner['id']]);
