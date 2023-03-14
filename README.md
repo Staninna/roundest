@@ -12,7 +12,7 @@ To install this application, you will need to have PHP and a web server installe
 
 1. Clone this repository to your local machine.
 2. Copy the contents of the `/src` directory to your web server's document root directory.
-3. Create a new MySQL database and import the `pokemon.sql` file located in the `database` directory.
+3. Create a new MySQL database and import/run the `pokemon.sql` file located in the `database` directory.
 4. Update the details in the `config.example.php` file located in the `src/backend` directory and rename the file to `config.php`.
 5. Navigate to the URL where you installed the application in your web browser.
 
